@@ -1,0 +1,39 @@
+pre-processor parser
+also check line numbers and characters consume for errors
+maybe you can create a separate file tracker file
+
+create an error function.
+
+TODO: Continue with macro algorithm
+    1) read next line.
+    2) if field is macro name switch to content.
+    3) if field is "mcr" (else skip to step 6).
+    4) switch "has mcr" flag.
+    5) there's a macro definition - enter to macro table macro name.
+    6) read next line (if EOF skip to step 9) if "has macro flag" is on end no "endmcr" detected -
+       enter line to macro content and delete line else (not macro) back to step 1.
+    7) if "endmcr" detected - delete tag from file and continue, if not back to step 6.
+    8) turn off "has mcr" flag. go back to 1 (finished macro definition save).
+    9) finish: save spread macro file.
+
+Note: I stopped at processing the macro when reading mcr --> I need to set up a function that adds a macro
+look into creating a sub function to handle it outside of the macroParser.
+
+Need to add saved words list to check macro validation.
+
+
+I implemented an insert macro function for now (not inserting yet, need to check if we can assume endmcr
+is in new line and if not implement accordingly.
+
+
+Implemented an insert macro and made sure table works fine, created a copy file mechanism.
+Need to actually delete the consumed macro line and implement the insert macro and save a copy file.  
+
+
+macro parser implemented - need to return a file for the second pass.
+
+
+TODO: Complete skip function to skip comments and initial white lines
+
+
+TODO: First Pass Assembler
