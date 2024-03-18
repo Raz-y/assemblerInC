@@ -32,8 +32,23 @@ Need to actually delete the consumed macro line and implement the insert macro a
 
 macro parser implemented - need to return a file for the second pass.
 
+Assembler function works properly, need to check if there's a need to keep the formatting (indentations)
+
+
+
 
 TODO: Complete skip function to skip comments and initial white lines
+    - Skip comments
+    - Skip initial white lines
 
+Currently skip() only skips initial while lines and initial comment
+created a skipAndCopy() function to replace the copy function and result in a copy file with no comments
+
+
+## ! Test your macroParser ! ##
+
+
+
+TODO: Create data structures
 
 TODO: First Pass Assembler

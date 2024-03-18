@@ -34,4 +34,23 @@ void printFile(FILE *fp){
 }
 
 
+/* skipAndCopy:*/
 
+void skipAndCopy(FILE *source, FILE *dest) {
+    int c, inComment = 0;
+
+    while ((c = fgetc(source)) != EOF) {
+        if (inComment) {
+            if (c == '\n') {
+                inComment = 0;
+                fputc(c, dest);
+            }
+        } else {
+            if (c == ';') {
+                inComment = 1;
+            } else {
+                fputc(c, dest);
+            }
+        }
+    }
+}

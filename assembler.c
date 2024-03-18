@@ -37,18 +37,16 @@ int main(int argc, char *argv[]){
       exit(1);
   }
 
-    fileCopy(origin, fp);
+    /*fileCopy(origin, fp);*/
+    skipAndCopy(origin, fp);
     fclose(origin);
-    fprintf(stdout, "Copy created successfully, processing this copy....\n");
-
+    fprintf(stdout, "Copy created successfully, processing copy....\n");
 
     printFile(fp);
-
     rewind(fp);
 
-    fp = skip(fp);
 
-    fprintf(stdout, "\n-------------------\n");
+    fprintf(stdout, "\n--------- Running Assembler ----------\n");
 
     macroParser(fp);
     fclose(fp);

@@ -2,7 +2,7 @@
 #include <ctype.h>
 #include "parser.h"
 
-/* skip white characters */
+/* skip white characters
 
 FILE *skip (FILE *fp){
   int c;
@@ -22,3 +22,6 @@ FILE *skip (FILE *fp){
 
   return fp;
 }
+
+*/
+
