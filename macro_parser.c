@@ -23,7 +23,7 @@ void macroParser(FILE *fp) {
         exit(1);
     }
 
-    fprintf(stdout, " --- in macroParser --- \n");
+    fprintf(stdout, "\n --- in macroParser --- \n\n");
 
 
     while (fgets(line, MAX_LINE, fp) != NULL) {
@@ -33,18 +33,14 @@ void macroParser(FILE *fp) {
 
         while (word != NULL) {
             if ((mc = lookup(word)) != NULL) {
-                fprintf(stdout, " ---  found macro name need to insert text --- \n");
-                fprintf(stdout, "\n\n--- Macro ---\n\n Name: %s\n Content: %s\n\n--- End Macro ---\n\n", mc->name, mc->content);
                 fputs(mc->content, outFile);
             } else if (strcmp(word, "mcr") == 0) {
                 word = strtok(NULL, " \t\n");
-                fprintf(stdout, " ---  new macro name: %s --- \n", word);
 
                 if (lookup(word) != NULL) {
-                    fprintf(stdout, " ---  duplicate macro name --- \n");
+                    fprintf(stderr, "Duplicate macro name\n");
+                    exit(1);
                 } else {
-                    fprintf(stdout, " ---  has macro flag turned on --- \n");
-                    fprintf(stdout, " ---  initiating macro parsing --- \n");
                     hasMcr = 1;
                     insertMacroToTable(fp, word);
                     hasMcr = 0;
@@ -63,7 +59,7 @@ void macroParser(FILE *fp) {
     }
 
         printMacroTable(macroTable);
-        fprintf(stdout, " --- out macroParser --- \n");
+        fprintf(stdout, "\n --- out macroParser --- \n\n");
         fclose(outFile);
 }
 
@@ -76,8 +72,6 @@ void insertMacroToTable(FILE *fp, char *macroName){
     size_t contentLength = 0;
     int endMcrFound = 0;
 
-    fprintf(stdout, " ---  in insertMacroToTable --- \n");
-    fprintf(stdout, " ---  new macro name: %s --- \n", macroName);
 
     while(!endMcrFound && fgets(line, MAX_LINE, fp)!= NULL){
 
@@ -108,7 +102,6 @@ void insertMacroToTable(FILE *fp, char *macroName){
 
             } else {
                 endMcrFound = 1;
-                fprintf(stdout, " ---  end of macro found --- \n");
                 break;
             }
         }
@@ -119,11 +112,9 @@ void insertMacroToTable(FILE *fp, char *macroName){
        if (content[contentLength - 1] == ' ') {
             content[contentLength - 1] = '\0';
         }
-       fprintf(stdout, "%s", content);
        addMacro(macroName, content);
        free(content);
     }
-    fprintf(stdout, " --- out of insertMacroToTable --- \n");
 
 }
 

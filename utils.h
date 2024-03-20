@@ -7,4 +7,6 @@ void fileCopy(FILE *, FILE *);
 
 void printFile(FILE *);
 
+void skipAndCopy(FILE *, FILE *);
+
 #endif

@@ -4,8 +4,8 @@
 #include <stdio.h>
 #include "macro_parser.h"
 
-/* skip white characters */
-FILE *skip(FILE *);
-
+/* skip white characters
+FILE * skip(FILE *);
+*/
 
 #endif
