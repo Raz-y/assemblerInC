@@ -37,6 +37,7 @@ Assembler function works properly, need to check if there's a need to keep the f
 
 
 
+
 TODO: Complete skip function to skip comments and initial white lines
     - Skip comments
     - Skip initial white lines
